@@ -13338,11 +13338,10 @@ W celu sprawdzenia poprawności algorytmu tworzymy listę aktualnych wartości '
 </ul>
 <p>Wykres optymalizacji prezentuje się w następujący sposób:</p>
 <p><br></p>
-<p><img src="wykreswspinaczka.png" alt="title"></p>
 <p><img src="wspinaczka2.png" alt="title"></p>
 <p><br></p>
 <p>Gdzie na osi X występują liczby iteracji, a na osi Y wartości 'KR'.</p>
-<p>Ostateczny wynik dla 'KR' to  31376082, 205111018</p>
+<p>Ostateczny wynik dla 'KR' to  205111018.</p>
 <p>Argument <strong>number_of_iterations</strong> ulepsza algorytm ponieważ im mniejsza jest ta wartość tym mniejsze jest prawdopodobieństwo że algorytm osiągnął ekstremum. Zwiększenie tego argumentu wydłuża czas wykonania się algorytmu lecz również zwiększy jego efektywność.
 <br></p>
 
@@ -13353,7 +13352,7 @@ neighbours_count=20)
 
 </code></pre>
 <p><br>
-Ostateczny wynik dla 'KR' to 174287727. 205111018</p>
+Ostateczny wynik dla 'KR' to 205111018.</p>
 <p>Argument <strong>break_counter</strong> jest to licznik, który po wyzerowaniu kończy algorytm. Jego zwiększenie powoduje że algorytm dłużej będzie "stał w miejscu" i sprawdzał czy nie ma lepszej opcji. 
 <br></p>
 
@@ -13364,7 +13363,7 @@ Ostateczny wynik dla 'KR' to 174287727. 205111018</p>
 
 </code></pre>
 <p><br>
-Ostateczny wynik dla 'KR' to 151043532. 205111018</p>
+Ostateczny wynik dla 'KR' to 205111018.</p>
 <p>Argument <strong>neighbours_count</strong> ulepsza algorytm ponieważ im mniejsza jest wartość tego argumentu tym mniejszy jest zakres sprawdzanych sąsiadującyh obiektów. Sprowadza się to wydłużenia pracy algorytmu, oraz mniejszego prawdopodobieństwa że przy zadanych argumentach przy zadanym zakresie algorytm osiągnie ekstremum globalne.
 <br></p>
 
@@ -13375,7 +13374,7 @@ Ostateczny wynik dla 'KR' to 151043532. 205111018</p>
 
 </code></pre>
 <p><br>
-Ostateczny wynik dla 'KR' to 42966032. 208786181
+Ostateczny wynik dla 'KR' to 208786181.
 <br></p>
 
 <pre><code>new_order, new_optimalization = hill_climbing_algorithm(
@@ -13386,7 +13385,7 @@ Ostateczny wynik dla 'KR' to 42966032. 208786181
 
 </code></pre>
 <p><br>
-Ostateczny wynik dla 'KR' to 39060500. 186185180</p>
+Ostateczny wynik dla 'KR' to 186185180.</p>
 <p><strong>Wszystkie wyniki przedstawione dla poszczególnych wartośc argumentów zależą także od czynnika losowego jakim jest początkowe zadanie obrane za punkt startowy algorytmu. Dlatego przedstawione powyżej zależności nie będą prawdziwe w każdym przypadku uruchomienia algorytmu.</strong></p>
 
 </div>
@@ -13459,9 +13458,8 @@ Algorytm wyżarzania z bazowymi argumentami dla:
 
 </code></pre>
 <p><br>
-Ostateczna wartość 'KR' to 689383. 211094417</p>
+Ostateczna wartość 'KR' to 211094417.</p>
 <p><br></p>
-<p><img src="wykreswyzarzanie.png" alt="title"></p>
 <p><img src="wyzarzanie2.png" alt="title"></p>
 <p><br></p>
 <p>Argument <strong>T</strong>  wpływa na algorytm ponieważ może określać on maksymalną liczbę iteracji w przypadku gdy nie jest ustalony argument <strong>number_of_generations</strong>. Wpływa on również na prawdopodobieństwo przyjęcia gorszego niż poprzedniego wyniku. Im większa temperatura tym większe prawdopodobieństwo i tym samym większe wahania pomiędzy wynikami między poszczególnymi iteracjami. Tą zależność zauważyć można także na wykresie przedstawionym powyżej.</p>
@@ -13474,12 +13472,11 @@ Ostateczna wartość 'KR' to 689383. 211094417</p>
     number_of_generations = 1000)
 
 </code></pre>
-<p>Ostateczna wartość 'KR' to 689383. 207602394</p>
+<p>Ostateczna wartość 'KR' to 207602394.</p>
 <p><br></p>
-<p><img src="wykreswyzarzanietemp.png" alt="title"></p>
-<p><img src="wyzarzanietemp2.png" alt="title">
-<br>
-Argument <strong>number_of_generations</strong> ulepsza algorytm ponieważ im mniejsza jest ta wartość tym mniejsze jest prawdopodobieństwo że algorytm osiągnął optymalny wynik. Zwiększenie tego argumentu wydłuża czas wykonania się algorytmu lecz również zwiększy jego efektywność co zaobserwowac możemy na powyższym wykresie.</p>
+<p><img src="wyzarzanietemp2.png" alt="title"></p>
+<p><br></p>
+<p>Argument <strong>number_of_generations</strong> ulepsza algorytm ponieważ im mniejsza jest ta wartość tym mniejsze jest prawdopodobieństwo że algorytm osiągnął optymalny wynik. Zwiększenie tego argumentu wydłuża czas wykonania się algorytmu lecz również zwiększy jego efektywność co zaobserwowac możemy na powyższym wykresie.</p>
 <p><br></p>
 
 <pre><code>new_order, new_optimalization = simulated_anniling_algorithm(
@@ -13596,17 +13593,17 @@ Ostateczny wynik dla 'KR' to 2758246.</p>
 <tbody>
 <tr>
 <td style="text-align:left">Tabu Search</td>
-<td style="text-align:center">2758246</td>
+<td style="text-align:center">4114636</td>
 <td style="text-align:center">3020</td>
 </tr>
 <tr>
 <td style="text-align:left">Hill Climbing</td>
-<td style="text-align:center">31376082</td>
+<td style="text-align:center">186185180</td>
 <td style="text-align:center">1</td>
 </tr>
 <tr>
 <td style="text-align:left">Simulated Annealing</td>
-<td style="text-align:center">689383</td>
+<td style="text-align:center">207602394</td>
 <td style="text-align:center">4</td>
 </tr>
 <tr>
@@ -14845,19 +14842,6 @@ Ostateczny wynik dla 'KR' to 2758246.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
