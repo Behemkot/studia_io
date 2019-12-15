@@ -33,12 +33,12 @@ def get_neighbours(idx, neighbours_count = 10, df = df):
     # idx = X, sąsiad = 0, nie sąsiad = -
     # nr_indeksu | ... | n-4 | n-3 | n-2 | n-1 |  n  | n+1 | n+2 | n+3 | n+4 | ... |
     # sasiedztwo |  -  |  -  |  0  |  0  |  0  |  X  |  0  |  0  |  0  |  -  |  -  |
-    
-    L = len(df) - 1 
+
+    L = len(df) - 1
     idx_prev = idx # indeks dla ktorego szukamy sasiadow
     N_half = N//2 # polowa wartosci N
-    
-    
+
+
     # Idea sąsiedztwa dla N = 6 i idx = n < N/2
     # idx = X, sąsiad = 0, nie sąsiad = -
     # przykład n = 2
@@ -61,13 +61,13 @@ def get_neighbours(idx, neighbours_count = 10, df = df):
 
 def calculate_improvements(KR_before, idx, neighbours, improvements, df = df):
     for neighbour, improvement in zip(
-        neighbours, 
+        neighbours,
         np.nditer(improvements, op_flags = ['readwrite'])
     ):
         swap(idx, neighbour)
         improvement[...] = np.float64(get_KR() - KR_before)
         swap(idx, neighbour)
-        
+
 def search_for_the_best_neighbour(neighbours, improvements):
     if improvements.min() > 0:
         return False
@@ -77,10 +77,10 @@ def search_for_the_best_neighbour(neighbours, improvements):
 def swap(idx_1, idx_2, df=df):
     # zamiana miejscami dwóch wierszy "in place" - nie tworzymy nowej ramki danych
     df.iloc[idx_1], df.iloc[idx_2] = df.iloc[idx_2].copy(), df.iloc[idx_1].copy()
-    
+
 def move(idx_1, idx_2, df=df):
     swap(idx_1, idx_2) # ruch
-    
+
 def plot_optimalization(optimalization):
     # TODO: można to zrobić ładniej matplotlibem
     optimalization["Wartosc kombinacji"].plot(kind="line")
@@ -92,8 +92,8 @@ def plot_optimalization(optimalization):
 np.random.seed(42)
 
 def hill_climbing_algorithm(
-    number_of_iterations = 1000, 
-    break_counter = 10, 
+    number_of_iterations = 1000,
+    break_counter = 10,
     neighbours_count = 20
 ):
     KR_before = get_KR() # początkowa wartość kombinacji
@@ -103,7 +103,7 @@ def hill_climbing_algorithm(
                 }, ignore_index=True)
     improvements = np.zeros(neighbours_count)
     idx = np.random.randint(len(df))
-    
+
     while number_of_iterations and break_counter:
         neighbours = get_neighbours(idx, neighbours_count=neighbours_count) # lista sąsiadów
         # obliczanie potencjalnych ulepszeń dla sąsiadów
@@ -118,19 +118,19 @@ def hill_climbing_algorithm(
             # obliczanie obecnej kombinacji
             KR_now = get_KR()
             # kolejna iteracja rozpoczyna się od miejsca na które wskoczył idx
-            idx = best_neighbour  
+            idx = best_neighbour
             # dodawanie obecnej wartości kombinacji do listy wszystkich wartości
             optimalization = optimalization.append({
                 "Wartosc kombinacji": KR_now
             }, ignore_index=True)
-            
+
             KR_before = KR_now
             number_of_iterations -= 1
         else:
             break_counter -= 1
-            
+
     order = df["Zadanie"]
-    
+
     return order, optimalization
 
 
@@ -144,5 +144,5 @@ if __name__ == '__main__':
             neighbours_count=20
         )
     plot_optimalization(new_optimalization)
-    new_optimalization["Wartosc kombinacji"].iloc[-1]
+    print(new_optimalization["Wartosc kombinacji"].iloc[-1])
 

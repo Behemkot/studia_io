@@ -41,11 +41,11 @@ def get_neighbours(idx, neighbours_count = 20, df = df):
     # idx = X, sąsiad = 0, nie sąsiad = -
     # nr_indeksu | ... | n-4 | n-3 | n-2 | n-1 |  n  | n+1 | n+2 | n+3 | n+4 | ... |
     # sasiedztwo |  -  |  -  |  0  |  0  |  0  |  X  |  0  |  0  |  0  |  -  |  -  |
-    
-    L = len(df) - 1 
+
+    L = len(df) - 1
     idx_prev = idx # indeks dla ktorego szukamy sasiadow
     N_half = N//2 # polowa wartosci N
-    
+
     # Idea sąsiedztwa dla N = 6 i idx = n < N/2
     # idx = X, sąsiad = 0, nie sąsiad = -
     # przykład n = 2
@@ -69,7 +69,7 @@ def get_neighbours(idx, neighbours_count = 20, df = df):
 def swap(idx_1, idx_2, df=df):
     # zamiana miejscami dwóch wierszy "in place" - nie tworzymy nowej ramki danych
     df.iloc[idx_1], df.iloc[idx_2] = df.iloc[idx_2].copy(), df.iloc[idx_1].copy()
-    
+
 def move(idx_1, idx_2, df=df):
     swap(idx_1, idx_2) # ruch
 
@@ -85,9 +85,9 @@ def plot_optimalization(optimalization):
 
 
 def simulated_anniling_algorithm(
-    T = 2500, 
-    Tmin = 100, 
-    neighbours_count=20, 
+    T = 2500,
+    Tmin = 100,
+    neighbours_count=20,
     number_of_generations = 1000
 ):
     global df
@@ -116,7 +116,7 @@ def simulated_anniling_algorithm(
         T = reduce_temperature(T)
     order = df["Zadanie"]
     return order, optimalization
-            
+
 
 
 # In[6]:
@@ -130,5 +130,5 @@ if __name__ == '__main__':
         number_of_generations=1000
     )
     plot_optimalization(new_optimalization)
-    new_optimalization["Wartosc kombinacji"].iloc[-1]
+    print(new_optimalization["Wartosc kombinacji"].iloc[-1])
 

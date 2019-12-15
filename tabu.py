@@ -69,7 +69,7 @@ def search_for_the_best_move(df = df):
 def swap(idx, df=df):
     # zamiana miejscami dwóch wierszy "in place" - nie tworzymy nowej ramki danych
     df.iloc[idx[0]], df.iloc[idx[1]] = df.iloc[idx[1]].copy(), df.iloc[idx[0]].copy()
-    
+
 def move(idx, inactive_time = 3, df=df):
     global tabu, optimalization
     swap(idx) # ruch
@@ -87,12 +87,12 @@ def check_in_tabu(idx):
         if item == idx:
             return True
     return False
-    
+
 def update_tabu():
     global tabu
     tabu["status"] -= 1 # aktualizacja długości oczekiwania
     tabu = tabu[tabu["status"] != 0] # usuwanie ruchów które przestały być zabronione
-    
+
 def plot_optimalization(optimalization):
     # TODO: można to zrobić ładniej matplotlibem
     optimalization["Wartosc kombinacji"].plot(kind="line")
@@ -115,16 +115,16 @@ def tabu_search_algorithm(inactive_time = 3, break_counter = 3, number_of_genera
     KR_before = get_KR() # wartość KR przed wykonaniem ruchu
     while number_of_generations and break_counter:
         print(f"{number_of_generations} iterations left.")
-        gen_Z(KR_before) 
+        gen_Z(KR_before)
         best_move = search_for_the_best_move() # znajdz najlepszy ruch
         KR_now = KR_before + Z[best_move] # wartość KR po wykonaniu ruchu
         move(best_move, inactive_time) # wykonaj najlepszy ruch
-        
+
         # jeśli nowe ułożenie jest gorsze niż poprzednie
         if KR_before <= KR_now:
             break_counter -= 1 # jeśli zdarzy się tak 3 razy to przerywamy szukanie kombinacji
             continue # powtarzamy iteracje
-            
+
         KR_before = KR_now
         # dodawanie obecnej wartości kombinacji do listy wszystkich wartości
         new_optimalization = new_optimalization.append({
@@ -132,7 +132,7 @@ def tabu_search_algorithm(inactive_time = 3, break_counter = 3, number_of_genera
         }, ignore_index=True)
         number_of_generations -= 1
     order = df["Zadanie"]
-    
+
     return order, new_optimalization
 
 
@@ -149,5 +149,5 @@ def tabu_search_algorithm(inactive_time = 3, break_counter = 3, number_of_genera
 if __name__ == '__main__':
     new_order, new_opt = tabu_search_algorithm(inactive_time=10)
     plot_optimalization(optimalization)
-    optimalization["Wartosc kombinacji"].iloc[-1]
+    print(optimalization["Wartosc kombinacji"].iloc[-1])
 
